@@ -3,465 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Для тебя💖</title>
-
+<title>N💖</title> 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-html, body {
-    height: 100%;
-    font-family: 'Inter', sans-serif;
-    background:
-        radial-gradient(circle at 20% 20%, #ffd9ea, transparent),
-        radial-gradient(circle at 80% 80%, #ffeaf5, transparent),
-        #fff7fb;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    position: fixed;
-    width: 100%;
-}
-
-.iphone-container {
-    width: 100%;
-    height: 100%;
-    max-width: 390px;
-    max-height: 844px;
-    margin: 0 auto;
-    position: relative;
-    background: transparent;
-}
-
-.app {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    position: relative;
-}
-
-.card {
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 700px;
-    padding: 40px 28px 50px;
-    border-radius: 32px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    box-shadow:
-        0 40px 80px rgba(255, 80, 140, 0.15),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-    animation: float 6s ease-in-out infinite;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
-}
-
-.content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.title {
-    font-weight: 800;
-    font-size: 30px;
-    line-height: 1.3;
-    color: #ff2a78;
-    margin-bottom: 15px;
-    text-align: center;
-    padding: 0 10px;
-}
-
-.subtitle {
-    color: #666;
-    font-size: 16px;
-    margin-bottom: 40px;
-    text-align: center;
-    padding: 0 10px;
-}
-
-.buttons-container {
-    position: relative;
-    height: 200px;
-    border-radius: 24px;
-    background: rgba(255, 120, 170, 0.08);
-    margin: 30px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.btn {
-    position: absolute;
-    border: none;
-    padding: 18px 32px;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    min-width: 140px;
-    z-index: 2;
-}
-
-.yes {
-    background: linear-gradient(135deg, #ff8dbb, #ff2a78);
-    color: white;
-    box-shadow: 0 15px 30px rgba(255, 42, 120, 0.3);
-    left: 50%;
-    transform: translateX(-50%);
-    top: 40%;
-}
-
-.yes:active {
-    transform: translateX(-50%) scale(0.95);
-}
-
-.no {
-    background: white;
-    color: #ff2a78;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 2px solid rgba(255, 120, 170, 0.2);
-}
-
-.success-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: linear-gradient(135deg, #ffd1e6, #ffe6f3);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-    z-index: 10;
-    border-radius: 32px;
-    padding: 40px 30px;
-}
-
-.success-overlay.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.success-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    width: 100%;
-    max-width: 320px;
-}
-
-.success-text {
-    font-size: 32px;
-    color: #ff2a78;
-    font-weight: 800;
-    text-align: center;
-    line-height: 1.3;
-}
-
-.phrase {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    text-align: center;
-    width: 100%;
-}
-
-.phrase.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.phrase-1 {
-    font-size: 34px;
-    color: #ff2a78;
-    margin-bottom: 10px;
-}
-
-.phrase-2 {
-    font-size: 30px;
-    color: #ff5c9d;
-    margin-top: 10px;
-}
-
-.phrase-3 {
-    font-size: 26px;
-    color: #ff8dbb;
-    font-style: italic;
-    margin-top: 5px;
-}
-
-.next-btn {
-    margin-top: 40px;
-    padding: 16px 40px;
-    background: linear-gradient(135deg, #ff8dbb, #ff2a78);
-    color: white;
-    border: none;
-    border-radius: 28px;
-    font-weight: 600;
-    font-size: 18px;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease;
-    box-shadow: 0 10px 25px rgba(255, 42, 120, 0.3);
-    min-width: 180px;
-}
-
-.next-btn.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.next-btn:active {
-    transform: translateY(2px);
-}
-
-.hearts-background {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.heart {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: #ff6fa5;
-    transform: rotate(45deg);
-    animation: rise linear forwards;
-    opacity: 0;
-}
-
-.heart:before,
-.heart:after {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: #ff6fa5;
-    border-radius: 50%;
-}
-
-.heart:before { top: -9px; }
-.heart:after { left: -9px; }
-
-@keyframes rise {
-    0% {
-        transform: translateY(100vh) rotate(45deg) scale(0.5);
-        opacity: 0;
-    }
-    20% { opacity: 1; }
-    100% {
-        transform: translateY(-100px) rotate(45deg) scale(1.2);
-        opacity: 0;
-    }
-}
-
-@media (max-height: 700px) {
-    .card {
-        min-height: 600px;
-        padding: 30px 20px 40px;
-    }
-    
-    .title {
-        font-size: 26px;
-        margin-bottom: 10px;
-    }
-    
-    .subtitle {
-        font-size: 14px;
-        margin-bottom: 30px;
-    }
-    
-    .buttons-container {
-        height: 180px;
-        margin: 20px 0;
-    }
-}
-
-@supports (padding: max(0px)) {
-    .app {
-        padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) 
-                 max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
-    }
-}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;font-family:'Inter',sans-serif;background:radial-gradient(circle at 20% 20%,#ffd9ea,transparent),radial-gradient(circle at 80% 80%,#ffeaf5,transparent),#fff7fb;overflow-y:scroll;overflow-x:hidden;position:fixed;width:100%}
+.desktop-message{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#ffd1e6,#ffe6f3);z-index:1000;align-items:center;justify-content:center;text-align:center;padding:20px}
+.desktop-content{max-width:500px;background:white;padding:40px;border-radius:24px;box-shadow:0 20px 60px rgba(255,42,120,0.2)}
+.desktop-content h2{color:#ff2a78;font-size:28px;margin-bottom:20px}
+.desktop-content p{color:#666;font-size:18px;line-height:1.5}
+.iphone-container{width:100%;height:100%;max-width:390px;max-height:844px;margin:0 auto;position:relative;background:transparent}
+.app{height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
+.card{position:relative;width:100%;height:auto;min-height:700px;padding:40px 28px 50px;border-radius:32px;background:rgba(255,255,255,0.85);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);box-shadow:0 40px 80px rgba(255,80,140,0.15),inset 0 0 0 1px rgba(255,255,255,0.8);animation:float 6s ease-in-out infinite;display:flex;flex-direction:column;justify-content:space-between}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-15px)}100%{transform:translateY(0)}}
+.content{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;height:100%}
+.title{font-weight:800;font-size:30px;line-height:1.3;color:#ff2a78;margin-bottom:15px;text-align:center;padding:0 10px}
+.subtitle{color:#666;font-size:16px;margin-bottom:40px;text-align:center;padding:0 10px}
+.buttons-container{position:relative;height:200px;border-radius:24px;background:rgba(255,120,170,0.08);margin:30px 0;display:flex;align-items:center;justify-content:center}
+.btn{border:none;padding:18px 32px;border-radius:999px;font-weight:600;font-size:18px;cursor:pointer;transition:all 0.3s cubic-bezier(0.2,0.8,0.2,1);min-width:140px;z-index:100;position:absolute}
+.yes{background:white;color:#ff2a78;box-shadow:0 10px 25px rgba(0,0,0,0.1);border:2px solid rgba(255,120,170,0.2);top:50%;left:50%;transform:translate(-50%,-50%);z-index:100}
+.yes:active{transform:translate(-50%,-50%) scale(0.95)}
+.no{background:white;color:#ff2a78;box-shadow:0 10px 25px rgba(0,0,0,0.1);border:2px solid rgba(255,120,170,0.2);top:50%;left:50%;transform:translate(-50%,-50%);z-index:1000}
+.success-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(135deg,#ffd1e6,#ffe6f3);opacity:0;pointer-events:none;transition:opacity 0.5s ease;z-index:2000;border-radius:32px;padding:40px 30px}
+.success-overlay.show{opacity:1;pointer-events:auto}
+.success-content{display:flex;flex-direction:column;align-items:center;gap:25px;width:100%;max-width:320px}
+.success-text{font-size:32px;color:#ff2a78;font-weight:800;text-align:center;line-height:1.3}
+.phrase{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;text-align:center;width:100%}
+.phrase.show{opacity:1;transform:translateY(0)}
+.phrase-1{font-size:34px;color:#ff2a78;margin-bottom:10px}
+.phrase-2{font-size:30px;color:#ff5c9d;margin-top:10px}
+.phrase-3{font-size:26px;color:#ff8dbb;font-style:italic;margin-top:5px}
+.next-btn{margin-top:40px;padding:16px 40px;background:linear-gradient(135deg,#ff8dbb,#ff2a78);color:white;border:none;border-radius:28px;font-weight:600;font-size:18px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all 0.5s ease;box-shadow:0 10px 25px rgba(255,42,120,0.3);min-width:180px;z-index:2001}
+.next-btn.show{opacity:1;transform:translateY(0)}
+.next-btn:active{transform:translateY(2px)}
+.hearts-background{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.heart{position:absolute;width:18px;height:18px;background:#ff6fa5;transform:rotate(45deg);animation:rise linear forwards;opacity:0}
+.heart:before,.heart:after{content:'';position:absolute;width:18px;height:18px;background:#ff6fa5;border-radius:50%}
+.heart:before{top:-9px}
+.heart:after{left:-9px}
+@keyframes rise{0%{transform:translateY(100vh) rotate(45deg) scale(0.5);opacity:0}20%{opacity:1}100%{transform:translateY(-100px) rotate(45deg) scale(1.2);opacity:0}}
+@media (max-height:700px){.card{min-height:600px;padding:30px 20px 40px}.title{font-size:26px;margin-bottom:10px}.subtitle{font-size:14px;margin-bottom:30px}.buttons-container{height:180px;margin:20px 0}}
+@media (min-width:768px){.desktop-message{display:flex}.iphone-container{display:none}}
+@supports (padding:max(0px)){.app{padding:max(20px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left))}}
 </style>
 </head>
-
 <body>
+<div class="desktop-message">
+<div class="desktop-content">
+<h2>💖 Открой на телефоне!</h2>
+<p>Эта страница создана специально для мобильных устройств. Откройе её на своем айфоне, чтобы получить доступ 💫</p>
+<p style="margin-top:20px;font-size:16px;color:#dedede">Либо просто сделай окно браузера меньше</p>
+</div></div>
 <div class="iphone-container">
-    <div class="app">
-        <div class="card">
-            <div class="content">
-                <div class="title">Сыграем в одну игру?</div>
-                <div class="subtitle">Жми "Да", просто другая кнопка всё убегает..</div>
-                <div class="buttons-container" id="zone">
-                    <button class="btn yes" id="yes">Да</button>
-                    <button class="btn no" id="no">Нет</button>
-                </div>
-            </div>
-            
-            <div class="success-overlay" id="success">
-                <div class="success-content">
-                    <div class="success-text">
-                        <div class="phrase phrase-1" id="phrase1">Ладно, я пошутил</div>
-                        <div class="phrase phrase-2" id="phrase2"></div>
-                        <div class="phrase phrase-3" id="phrase3"></div>
-                    </div>
-                    <button class="next-btn" id="nextBtn">Дальше →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="hearts-background" id="hearts"></div>
-    </div>
+<div class="app">
+<div class="card">
+<div class="content">
+<div class="title">Сыграем в одну игру?</div>
+<div class="subtitle">Жми "Да", просто другая кнопка всё убегает..</div>
+<div class="buttons-container" id="zone">
+<button class="btn yes" id="yes">Да</button>
+<button class="btn no" id="no">Нет</button>
 </div>
-
+</div>
+<div class="success-overlay" id="success">
+<div class="success-content">
+<div class="success-text">
+<div class="phrase phrase-1" id="phrase1">Ладно, я пошутил</div>
+<div class="phrase phrase-2" id="phrase2"></div>
+<div class="phrase phrase-3" id="phrase3"></div>
+</div>
+<button class="next-btn" id="nextBtn">Дальше →</button>
+</div>
+</div>
+</div>
+<div class="hearts-background" id="hearts"></div>
+</div>
+</div>
 <script>
-const no = document.getElementById("no");
-const yes = document.getElementById("yes");
-const zone = document.getElementById("zone");
-const success = document.getElementById("success");
-const phrase1 = document.getElementById("phrase1");
-const phrase2 = document.getElementById("phrase2");
-const phrase3 = document.getElementById("phrase3");
-const nextBtn = document.getElementById("nextBtn");
-
-let noButtonPosition = {
-    x: 60,  
-    y: 45 
-};
-
-function moveNo() { 
-    const rect = zone.getBoundingClientRect();
-    const maxX = rect.width - no.offsetWidth - 20;
-    const maxY = rect.height - no.offsetHeight - 20;
-
-    const centerX = rect.width / 2 - no.offsetWidth / 2;
-    const centerY = rect.height / 2 - no.offsetHeight / 2;
-    const centerRadius = 100; 
-    
-    let newX, newY;
-    let attempts = 0;
-    const maxAttempts = 10;
-    
-    do {
-        newX = Math.random() * maxX;
-        newY = Math.random() * maxY;
-        attempts++;
-        
-        const distanceFromCenter = Math.sqrt(
-            Math.pow(newX - centerX, 2) + Math.pow(newY - centerY, 2)
-        );
-        
-        if (distanceFromCenter > centerRadius || attempts >= maxAttempts) {
-            break;
-        }
-    } while (true);
-        
-        const moveDistance = 100; 
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 30 + Math.random() * moveDistance;
-        
-        const deltaX = Math.cos(angle) * distance;
-        const deltaY = Math.sin(angle) * distance;
-        
-        newX = Math.max(10, Math.min(maxX, newX + deltaX));
-        newY = Math.max(10, Math.min(maxY, newY + deltaY));
-        
-        no.style.left = newX + "px";
-        no.style.top = newY + "px";
-        noButtonPosition = { x: newX, y: newY };
-    }
-
-setTimeout(() => {
-    moveNo();
-}, 100);
-
-no.addEventListener("mouseenter", moveNo);
-no.addEventListener("touchstart", (e) => { 
-    e.preventDefault(); 
-    moveNo(); 
-});
-
-yes.onclick = () => {
-    success.classList.add("show");
-    
-    setTimeout(() => {
-        phrase1.classList.add("show");
-    }, 200);
-    
-    setTimeout(() => {
-        phrase2.textContent = "хотя...";
-        phrase2.classList.add("show");
-    }, 1800);
-    
-    setTimeout(() => {
-        phrase3.textContent = "не совсем";
-        phrase3.classList.add("show");
-        nextBtn.classList.add("show");
-    }, 3400);
-};
-
-nextBtn.onclick = () => {
-    window.location.href = "game.html";
-};
-
-// Генерация сердечек
-function spawnHeart() {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.style.left = Math.random() * 100 + "vw";
-    h.style.animationDuration = (3 + Math.random() * 4) + "s";
-    
-    const hue = 330 + Math.random() * 30;
-    h.style.background = `hsl(${hue}, 100%, 70%)`;
-    
-    document.getElementById("hearts").appendChild(h);
-    setTimeout(() => h.remove(), 7000);
-}
-
-// Частота появления сердечек
-setInterval(spawnHeart, 450);
-
-// Запускаем несколько сердечек сразу
-for (let i = 0; i < 5; i++) {
-    setTimeout(spawnHeart, i * 300);
-}
-
-// Предотвращаем масштабирование на iOS
-document.addEventListener('touchmove', function(e) {
-    if(e.scale !== 1) {
-        e.preventDefault();
-    }
-}, { passive: false });
-
-
-
+function isMobileDevice(){return/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)}
+if(!isMobileDevice()&&window.innerWidth>768){document.querySelector('.desktop-message').style.display='flex';document.querySelector('.iphone-container').style.display='none'}
+const no=document.getElementById("no");const yes=document.getElementById("yes");const card=document.querySelector(".card");const success=document.getElementById("success");const phrase1=document.getElementById("phrase1");const phrase2=document.getElementById("phrase2");const phrase3=document.getElementById("phrase3");const nextBtn=document.getElementById("nextBtn");
+let noClickCount=0;const maxClicks=10;let yesClickCount=0;const maxYesClicks=3;let isTouchDevice='ontouchstart' in window;
+no.style.zIndex="1000";
+let lastYesPos={x:0,y:0};let lastNoPos={x:0,y:0};
+function getDistance(x1,y1,x2,y2){return Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2))}
+function updateYesButton(){
+if(yesClickCount===0){yes.style.background='white';yes.style.color='#ff2a78';yes.style.border='2px solid rgba(255,120,170,0.2)';yes.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'}
+else if(yesClickCount===1){yes.style.background='linear-gradient(135deg,#ffd1e6,#ff8dbb)';yes.style.color='white';yes.style.border='none';yes.style.boxShadow='0 10px 25px rgba(255,42,120,0.2)'}
+else if(yesClickCount>=2){yes.style.background='linear-gradient(135deg,#ff8dbb,#ff2a78)';yes.style.color='white';yes.style.border='none';yes.style.boxShadow='0 15px 30px rgba(255,42,120,0.3)'}}
+function moveButton(button,isYes=false){
+const container=document.getElementById("zone");const containerRect=container.getBoundingClientRect();const buttonRect=button.getBoundingClientRect();const buttonWidth=buttonRect.width;const buttonHeight=buttonRect.height;
+const availableWidth=containerRect.width-buttonWidth;const availableHeight=containerRect.height-buttonHeight;
+let newX,newY;let attempts=0;const maxAttempts=50;let distance=0;
+if(isYes&&yesClickCount===0){lastYesPos.x=availableWidth/2;lastYesPos.y=availableHeight/2}
+const currentPos=isYes?lastYesPos:lastNoPos;
+do{newX=Math.random()*availableWidth;newY=Math.random()*availableHeight;
+newX=Math.max(0,Math.min(availableWidth,newX));newY=Math.max(0,Math.min(availableHeight,newY));
+distance=getDistance(currentPos.x,currentPos.y,newX,newY);attempts++;
+if(attempts>=maxAttempts){break}}while(distance<50);
+const margin=20;
+newX=Math.max(margin,Math.min(availableWidth-margin,newX));newY=Math.max(margin,Math.min(availableHeight-margin,newY));
+button.style.left=newX+"px";button.style.top=newY+"px";button.style.transform="none";
+if(isYes){lastYesPos={x:newX,y:newY}}else{lastNoPos={x:newX,y:newY}}}
+function decreaseNoOpacity(){noClickCount++;
+const newOpacity=Math.max(0.1,1-(noClickCount*0.1));no.style.opacity=newOpacity;
+if(noClickCount>=maxClicks){no.style.opacity="0.05";no.style.pointerEvents='none';no.style.cursor='default'}
+moveButton(no)}
+function handleYesClick(){yesClickCount++;
+updateYesButton();
+if(yesClickCount<maxYesClicks){moveButton(yes,true)}else{no.style.display='none';success.classList.add("show");
+setTimeout(()=>{phrase1.classList.add("show")},200);
+setTimeout(()=>{phrase2.textContent="хотя...";phrase2.classList.add("show")},1800);
+setTimeout(()=>{phrase3.textContent="не совсем";phrase3.classList.add("show");nextBtn.classList.add("show")},3400)}}
+setTimeout(()=>{
+const container=document.getElementById("zone");const containerRect=container.getBoundingClientRect();const buttonRect=no.getBoundingClientRect();
+const margin=20;const availableWidth=containerRect.width-buttonRect.width;const availableHeight=containerRect.height-buttonRect.height;
+const noX=Math.random()*(availableWidth-margin*2)+margin;const noY=Math.random()*(availableHeight-margin*2)+margin;
+no.style.left=noX+"px";no.style.top=noY+"px";no.style.transform="none";lastNoPos={x:noX,y:noY};
+const yesX=Math.random()*(availableWidth-margin*2)+margin;const yesY=Math.random()*(availableHeight-margin*2)+margin;
+yes.style.left=yesX+"px";yes.style.top=yesY+"px";yes.style.transform="none";lastYesPos={x:yesX,y:yesY};
+updateYesButton();},100);
+no.addEventListener("mouseenter",()=>moveButton(no));no.addEventListener("click",function(e){if(!isTouchDevice){e.preventDefault();e.stopPropagation();decreaseNoOpacity()}});
+let touchStartTime;let touchStartX;let touchStartY;
+no.addEventListener("touchstart",function(e){e.preventDefault();const touch=e.touches[0];touchStartTime=Date.now();touchStartX=touch.clientX;touchStartY=touch.clientY;isTouchDevice=true});
+no.addEventListener("touchend",function(e){e.preventDefault();const touch=e.changedTouches[0];const touchTime=Date.now()-touchStartTime;const deltaX=Math.abs(touch.clientX-touchStartX);const deltaY=Math.abs(touch.clientY-touchStartY);
+if(touchTime<300&&deltaX<10&&deltaY<10){decreaseNoOpacity()}else{moveButton(no)}});
+yes.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();handleYesClick()});
+nextBtn.onclick=()=>{window.location.href="game.html"};
+function spawnHeart(){const h=document.createElement("div");h.className="heart";h.style.left=Math.random()*100+"vw";h.style.animationDuration=(3+Math.random()*4)+"s";
+const hue=330+Math.random()*30;h.style.background=`hsl(${hue},100%,70%)`;
+document.getElementById("hearts").appendChild(h);setTimeout(()=>h.remove(),7000)}
+setInterval(spawnHeart,450);for(let i=0;i<5;i++){setTimeout(spawnHeart,i*300)}
+document.addEventListener('touchmove',function(e){if(e.scale!==1){e.preventDefault()}},{passive:false});
+window.addEventListener('resize',function(){if(!isMobileDevice()&&window.innerWidth>768){document.querySelector('.desktop-message').style.display='flex';document.querySelector('.iphone-container').style.display='none'}else{document.querySelector('.desktop-message').style.display='none';document.querySelector('.iphone-container').style.display='block'}
+const container=document.getElementById("zone");const containerRect=container.getBoundingClientRect();const yesRect=yes.getBoundingClientRect();const noRect=no.getBoundingClientRect();
+const margin=20;const availableWidth=containerRect.width-yesRect.width;const availableHeight=containerRect.height-yesRect.height;
+const yesX=Math.random()*(availableWidth-margin*2)+margin;const yesY=Math.random()*(availableHeight-margin*2)+margin;
+yes.style.left=yesX+"px";yes.style.top=yesY+"px";yes.style.transform="none";lastYesPos={x:yesX,y:yesY};
+const noX=Math.random()*(availableWidth-margin*2)+margin;const noY=Math.random()*(availableHeight-margin*2)+margin;
+no.style.left=noX+"px";no.style.top=noY+"px";no.style.transform="none";lastNoPos={x:noX,y:noY}});
 </script>
 </body>
 </html>
