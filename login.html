@@ -71,8 +71,8 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:radial-gradient(
 <input type="text" id="about-you" class="text-input" placeholder="Твой цвет глаз?" autocomplete="off" autocapitalize="none" spellcheck="false">
 </div>
 <div class="hint">Просто введи свой цвет глаз</div>
-<div class="error-message" id="error1">Неверный ответ</div>
-<div class="success-message" id="success1">Верно!</div>
+<div class="error-message" id="error1">Не-а</div>
+<div class="success-message" id="success1">Правильно!</div>
 </div>
 <div class="question-box">
 <div class="question-title">
@@ -82,8 +82,8 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:radial-gradient(
 <div class="input-wrapper">
 <input type="text" id="about-me" class="text-input" placeholder="Мой цвет глаз?" autocomplete="off" autocapitalize="none" spellcheck="false">
 </div>
-<div class="hint">Если не помнишь - можно пропустить</div>
-<div class="error-message" id="error2">Неверный ответ</div>
+<div class="hint">Если не помнишь - можно пропустить)</div>
+<div class="error-message" id="error2">Не-а </div>
 <div class="success-message" id="success2">Правильно!</div>
 <button type="button" class="skip-btn" id="skipBtn">
 <i class="far fa-smile-wink"></i> Пропустить
@@ -91,7 +91,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:radial-gradient(
 </div>
 </div>
 <button type="submit" class="submit-btn" id="submitBtn" disabled>
-Продолжить
+Войти
 </button>
 </div>
 <div class="success-overlay" id="success">
@@ -105,38 +105,292 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:radial-gradient(
 </div>
 </div>
 <script>
-if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)&&window.innerWidth>768){document.querySelector('.desktop-message').style.display='flex';document.querySelector('.iphone-container').style.display='none'}
-const correctAboutYou=['голубой','голубые','голубая','голубого','синий','синие','синяя','синего','небесный','небесные','небесная','небесного','blue','светло синий','светло-синий','светло синие','светло-синие']
-const correctAboutMe=['зелёный','зеленый','зелёные','зеленые','зелёная','зеленая','зелёного','зеленого','зелён','зелен','green','изумрудный','изумрудные','изумрудная','изумрудного','салатовый','салатовые','салатового','травяной','травяные','травяная','травяного']
-let aboutYouCorrect=false,aboutMeCorrect=false,aboutMeSkipped=false
-function normalizeText(t){return t.trim().toLowerCase().replace(/\s+/g,' ').replace(/ё/g,'е')}
-function isCorrectAnswer(v,c){const n=normalizeText(v);return c.some(t=>n===normalizeText(t))}
-const aboutYouInput=document.getElementById('about-you'),aboutMeInput=document.getElementById('about-me'),error1=document.getElementById('error1'),error2=document.getElementById('error2'),success1=document.getElementById('success1'),success2=document.getElementById('success2'),successOverlay=document.getElementById('success'),loading=document.getElementById('loading'),submitBtn=document.getElementById('submitBtn'),skipBtn=document.getElementById('skipBtn')
-aboutYouInput.addEventListener('input',function(){const v=this.value
-if(isCorrectAnswer(v,correctAboutYou)){aboutYouCorrect=true;error1.style.display='none';success1.style.display='block';this.style.borderColor='#32d74b';this.style.boxShadow='0 0 0 3px rgba(50,215,75,0.1)'}
-else if(v){aboutYouCorrect=false;success1.style.display='none';error1.style.display='block';this.style.borderColor='#ff2a78';this.style.boxShadow='0 0 0 3px rgba(255,42,120,0.1)'}
-else{aboutYouCorrect=false;error1.style.display='none';success1.style.display='none';this.style.borderColor='rgba(255,120,170,0.3)';this.style.boxShadow='none'}
-checkSubmitButton()})
-aboutMeInput.addEventListener('input',function(){const v=this.value;aboutMeSkipped=false
-if(isCorrectAnswer(v,correctAboutMe)){aboutMeCorrect=true;error2.style.display='none';success2.style.display='block';this.style.borderColor='#32d74b';this.style.boxShadow='0 0 0 3px rgba(50,215,75,0.1)';skipBtn.style.display='none'}
-else if(v){aboutMeCorrect=false;success2.style.display='none';error2.style.display='block';this.style.borderColor='#ff2a78';this.style.boxShadow='0 0 0 3px rgba(255,42,120,0.1)';skipBtn.style.display='flex'}
-else{aboutMeCorrect=false;error2.style.display='none';success2.style.display='none';this.style.borderColor='rgba(255,120,170,0.3)';this.style.boxShadow='none';skipBtn.style.display='flex'}
-checkSubmitButton()})
-skipBtn.addEventListener('click',function(){aboutMeInput.value='';aboutMeCorrect=false;aboutMeSkipped=true;error2.style.display='none';success2.style.display='none';aboutMeInput.style.borderColor='rgba(255,120,170,0.3)';aboutMeInput.style.boxShadow='none';skipBtn.style.display='none'
-this.innerHTML='<i class="fas fa-check"></i> Пропущено';this.style.borderColor='#ffd60a';this.style.color='#ffd60a'
-setTimeout(()=>{this.innerHTML='<i class="far fa-smile-wink"></i> Пропустить';this.style.borderColor='rgba(255,42,120,0.3)';this.style.color='#ff2a78'},1500)
-checkSubmitButton()})
-function checkSubmitButton(){if(aboutYouCorrect&&(aboutMeCorrect||aboutMeSkipped)){submitBtn.disabled=false}else{submitBtn.disabled=true}}
-submitBtn.addEventListener('click',function(e){e.preventDefault()
-if(!aboutYouCorrect){error1.style.display='block';aboutYouInput.classList.add('shake');setTimeout(()=>aboutYouInput.classList.remove('shake'),400);aboutYouInput.focus();return}
-if(!aboutMeSkipped&&!aboutMeCorrect){error2.style.display='block';error2.textContent='Введи "зелёный" или нажми "Пропустить"';aboutMeInput.classList.add('shake');setTimeout(()=>aboutMeInput.classList.remove('shake'),400);aboutMeInput.focus();return}
-submitBtn.disabled=true;submitBtn.innerHTML='Проверяем...';successOverlay.classList.add('show')
-localStorage.setItem('valentine_authorized','true')
-setTimeout(()=>{loading.textContent='Всё верно!';setTimeout(()=>{window.location.href='index.html'},1000)},1500)})
-setTimeout(()=>{aboutYouInput.focus()},500)
-aboutYouInput.addEventListener('keypress',function(e){if(e.key==='Enter'){aboutMeInput.focus()}})
-aboutMeInput.addEventListener('keypress',function(e){if(e.key==='Enter'&&submitBtn.disabled===false){submitBtn.click()}})
-window.addEventListener('resize',function(){if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)&&window.innerWidth>768){document.querySelector('.desktop-message').style.display='flex';document.querySelector('.iphone-container').style.display='none'}else{document.querySelector('.desktop-message').style.display='none';document.querySelector('.iphone-container').style.display='block'}})
+    // Функция логирования на русском
+    function logEvent(eventName, details = {}) {
+        const timestamp = new Date().toISOString();
+        const logEntry = {
+            timestamp,
+            event: eventName,
+            details: details,
+            userAction: true
+        };
+        console.log(JSON.stringify(logEntry));
+    }
+
+    // Логируем загрузку страницы
+    logEvent('Страница входа загружена', {
+        устройство: navigator.userAgent.includes('iPhone') ? 'iPhone' : navigator.userAgent.includes('Android') ? 'Android' : 'Другое',
+        размерЭкрана: `${window.innerWidth}x${window.innerHeight}`,
+        мобильноеУстройство: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    });
+
+    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth > 768) {
+        document.querySelector('.desktop-message').style.display = 'flex';
+        document.querySelector('.iphone-container').style.display = 'none';
+    }
+
+    const correctAboutYou = ['голубой', 'голубые', 'голубая', 'голубого', 'небесный', 'небесные', 'небесная', 'небесного', 'blue', 'светло синий', 'светло-синий', 'светло синие', 'светло-синие'];
+    const correctAboutMe = ['зелёный', 'зеленый', 'зелёные', 'зеленые', 'зелёная', 'зеленая', 'зелёного', 'зеленого', 'green', 'изумрудный', 'изумрудные', 'изумрудная', 'изумрудного', 'салатовый', 'салатовые', 'салатового', 'травяной', 'травяные', 'травяная', 'травяного', 'серозеленые', 'серозелёные', 'серо-зеленые', 'серо-зелёные', 'серозеленые', 'красивый', 'красивые', 'красивого'];
+    
+    let aboutYouCorrect = false;
+    let aboutMeCorrect = false;
+    let aboutMeSkipped = false;
+
+    function normalizeText(t) {
+        return t.trim().toLowerCase().replace(/\s+/g, ' ').replace(/ё/g, 'е');
+    }
+
+    function isCorrectAnswer(v, c) {
+        const n = normalizeText(v);
+        return c.some(t => n === normalizeText(t));
+    }
+
+    const aboutYouInput = document.getElementById('about-you');
+    const aboutMeInput = document.getElementById('about-me');
+    const error1 = document.getElementById('error1');
+    const error2 = document.getElementById('error2');
+    const success1 = document.getElementById('success1');
+    const success2 = document.getElementById('success2');
+    const successOverlay = document.getElementById('success');
+    const loading = document.getElementById('loading');
+    const submitBtn = document.getElementById('submitBtn');
+    const skipBtn = document.getElementById('skipBtn');
+
+    // Логируем фокус на полях
+    aboutYouInput.addEventListener('focus', function() {
+        logEvent('Клик на поле "Цвет твоих глаз"');
+    });
+
+    aboutMeInput.addEventListener('focus', function() {
+        logEvent('Клик на поле "Цвет моих глаз"');
+    });
+
+    // Логируем каждый ввод символа в первое поле
+    aboutYouInput.addEventListener('input', function() {
+        const v = this.value;
+        const charCount = v.length;
+        
+        logEvent('Ввод в поле "Цвет твоих глаз"', {
+            текущийТекст: v,
+            длинаТекста: charCount,
+            последнийСимвол: charCount > 0 ? v[charCount - 1] : ''
+        });
+        
+        if(isCorrectAnswer(v, correctAboutYou)) {
+            aboutYouCorrect = true;
+            error1.style.display = 'none';
+            success1.style.display = 'block';
+            this.style.borderColor = '#32d74b';
+            this.style.boxShadow = '0 0 0 3px rgba(50, 215, 75, 0.1)';
+            
+            logEvent('Правильный ответ в поле "Цвет твоих глаз"', { 
+                ответ: v
+            });
+        } else if(v) {
+            aboutYouCorrect = false;
+            success1.style.display = 'none';
+            error1.style.display = 'block';
+            this.style.borderColor = '#ff2a78';
+            this.style.boxShadow = '0 0 0 3px rgba(255, 42, 120, 0.1)';
+            
+            logEvent('Неправильный ответ в поле "Цвет твоих глаз"', { 
+                ответ: v
+            });
+        } else {
+            aboutYouCorrect = false;
+            error1.style.display = 'none';
+            success1.style.display = 'none';
+            this.style.borderColor = 'rgba(255, 120, 170, 0.3)';
+            this.style.boxShadow = 'none';
+            
+            logEvent('Очистка поля "Цвет твоих глаз"');
+        }
+        checkSubmitButton();
+    });
+
+    // Логируем каждый ввод символа во второе поле
+    aboutMeInput.addEventListener('input', function() {
+        const v = this.value;
+        const charCount = v.length;
+        
+        logEvent('Ввод в поле "Цвет моих глаз"', {
+            текущийТекст: v,
+            длинаТекста: charCount,
+            последнийСимвол: charCount > 0 ? v[charCount - 1] : ''
+        });
+        
+        aboutMeSkipped = false;
+        
+        if(isCorrectAnswer(v, correctAboutMe)) {
+            aboutMeCorrect = true;
+            error2.style.display = 'none';
+            success2.style.display = 'block';
+            this.style.borderColor = '#32d74b';
+            this.style.boxShadow = '0 0 0 3px rgba(50, 215, 75, 0.1)';
+            skipBtn.style.display = 'none';
+            
+            logEvent('Правильный ответ в поле "Цвет моих глаз"', { 
+                ответ: v
+            });
+        } else if(v) {
+            aboutMeCorrect = false;
+            success2.style.display = 'none';
+            error2.style.display = 'block';
+            this.style.borderColor = '#ff2a78';
+            this.style.boxShadow = '0 0 0 3px rgba(255, 42, 120, 0.1)';
+            skipBtn.style.display = 'flex';
+            
+            logEvent('Неправильный ответ в поле "Цвет моих глаз"', { 
+                ответ: v
+            });
+        } else {
+            aboutMeCorrect = false;
+            error2.style.display = 'none';
+            success2.style.display = 'none';
+            this.style.borderColor = 'rgba(255, 120, 170, 0.3)';
+            this.style.boxShadow = 'none';
+            skipBtn.style.display = 'flex';
+            
+            logEvent('Очистка поля "Цвет моих глаз"');
+        }
+        checkSubmitButton();
+    });
+
+    // Логируем нажатие кнопки "Пропустить"
+    skipBtn.addEventListener('click', function() {
+        logEvent('Нажала кнопку "Пропустить"', {
+            былоВведеноДо: aboutMeInput.value,
+            правильныйБыл: aboutMeCorrect
+        });
+        
+        aboutMeInput.value = '';
+        aboutMeCorrect = false;
+        aboutMeSkipped = true;
+        error2.style.display = 'none';
+        success2.style.display = 'none';
+        aboutMeInput.style.borderColor = 'rgba(255, 120, 170, 0.3)';
+        aboutMeInput.style.boxShadow = 'none';
+        skipBtn.style.display = 'none';
+        
+        this.innerHTML = '<i class="fas fa-check"></i> Пропущено';
+        this.style.borderColor = '#ffd60a';
+        this.style.color = '#ffd60a';
+        
+        logEvent('Вопрос пропущен', { 
+            вопрос: 'Цвет моих глаз'
+        });
+        
+        setTimeout(() => {
+            this.innerHTML = '<i class="far fa-smile-wink"></i> Пропустить';
+            this.style.borderColor = 'rgba(255, 42, 120, 0.3)';
+            this.style.color = '#ff2a78';
+        }, 1500);
+        
+        checkSubmitButton();
+    });
+
+    function checkSubmitButton() {
+        const canSubmit = aboutYouCorrect && (aboutMeCorrect || aboutMeSkipped);
+        
+        if(canSubmit) {
+            submitBtn.disabled = false;
+            logEvent('Кнопка "Войти" стала активной', {
+                поле1Правильно: aboutYouCorrect,
+                поле2Правильно: aboutMeCorrect,
+                поле2Пропущено: aboutMeSkipped
+            });
+        } else {
+            submitBtn.disabled = true;
+        }
+    }
+
+    // Логируем нажатие кнопки "Войти"
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        logEvent('Нажала кнопку "Войти"', {
+            ответНаПоле1: aboutYouInput.value,
+            ответНаПоле2: aboutMeInput.value,
+            поле2Пропущено: aboutMeSkipped
+        });
+        
+        if(!aboutYouCorrect) {
+            logEvent('Ошибка: неправильный ответ на первый вопрос');
+            
+            error1.style.display = 'block';
+            aboutYouInput.classList.add('shake');
+            setTimeout(() => aboutYouInput.classList.remove('shake'), 400);
+            aboutYouInput.focus();
+            return;
+        }
+        
+        if(!aboutMeSkipped && !aboutMeCorrect) {
+            logEvent('Ошибка: неправильный ответ на второй вопрос', {
+                предложение: 'Введи "зелёный" или нажми "Пропустить"'
+            });
+            
+            error2.style.display = 'block';
+            error2.textContent = 'Введи "зелёный" или нажми "Пропустить"';
+            aboutMeInput.classList.add('shake');
+            setTimeout(() => aboutMeInput.classList.remove('shake'), 400);
+            aboutMeInput.focus();
+            return;
+        }
+        
+        logEvent('Все ответы верны, начинается авторизация');
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Проверяем...';
+        successOverlay.classList.add('show');
+        
+        localStorage.setItem('valentine_authorized', 'true');
+        
+        setTimeout(() => {
+            loading.textContent = 'Всё верно!';
+            logEvent('Ответы приняты, переход к игре');
+            
+            setTimeout(() => {
+                logEvent('Переход на главную страницу игры');
+                window.location.href = 'index.html';
+            }, 1000);
+        }, 1500);
+    });
+
+    // Логируем нажатие Enter
+    aboutYouInput.addEventListener('keypress', function(e) {
+        if(e.key === 'Enter') {
+            logEvent('Нажала Enter в первом поле, переход ко второму полю');
+            aboutMeInput.focus();
+        }
+    });
+
+    aboutMeInput.addEventListener('keypress', function(e) {
+        if(e.key === 'Enter' && submitBtn.disabled === false) {
+            logEvent('Нажала Enter во втором поле, отправка формы');
+            submitBtn.click();
+        }
+    });
+
+    window.addEventListener('resize', function() {
+        logEvent('Изменение размера окна', {
+            новыйРазмер: `${window.innerWidth}x${window.innerHeight}`
+        });
+        
+        if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth > 768) {
+            document.querySelector('.desktop-message').style.display = 'flex';
+            document.querySelector('.iphone-container').style.display = 'none';
+            logEvent('Показано сообщение для ПК');
+        } else {
+            document.querySelector('.desktop-message').style.display = 'none';
+            document.querySelector('.iphone-container').style.display = 'block';
+            logEvent('Показана мобильная версия');
+        }
+    });
+
+    setTimeout(() => {
+        aboutYouInput.focus();
+        logEvent('Автофокус на первое поле');
+    }, 500);
 </script>
 </body>
 </html>
