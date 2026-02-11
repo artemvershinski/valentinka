@@ -96,18 +96,25 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:radial-gradient(
 </div>
 </div>
 <script>
-    // Функция логирования на русском
-    function logEvent(eventName, details = {}) {
-        const timestamp = new Date().toISOString();
-        const logEntry = {
-            timestamp,
-            действие: eventName,
-            детали: details
-        };
-        console.log(JSON.stringify(logEntry));
-    }
 
-    // Логируем загрузку страницы
+    function logEvent(eventName, details = {}) {
+    const timestamp = new Date().toISOString();
+    const logEntry = {
+        timestamp,
+        действие: eventName,
+        детали: details,
+        страница: window.location.pathname
+    };
+    
+    try {
+        fetch('/api/log', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(logEntry)
+        }).catch(() => {});
+    } catch (e) {}
+}
+
     logEvent('Страница "Сыграем в игру" загружена', {
         устройство: navigator.userAgent.includes('iPhone') ? 'iPhone' : navigator.userAgent.includes('Android') ? 'Android' : 'Другое',
         размерЭкрана: `${window.innerWidth}x${window.innerHeight}`,
