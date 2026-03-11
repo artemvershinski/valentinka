@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>N💖 Heart</title>
+<title>N💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -695,12 +695,6 @@ html, body {
 </style>
 </head>
 
-
-
-
-
-    
-
 <body>
 <div class="auth-overlay" id="authOverlay">
     <div class="auth-content">
@@ -746,22 +740,22 @@ html, body {
                     <div class="challenges-title">Задания:</div>
                     <div class="challenges-grid">
                         <div class="challenge-item" id="challenge1">
-                            <div class="challenge-icon">👆</div>
+                            <div class="challenge-icon">🤍</div>
                             <div class="challenge-text">10 быстрых кликов</div>
                             <div class="checkmark">✓</div>
                         </div>
                         <div class="challenge-item" id="challenge2">
-                            <div class="challenge-icon">⏱️</div>
+                            <div class="challenge-icon">🤍</div>
                             <div class="challenge-text">Держи 3 секунды</div>
                             <div class="checkmark">✓</div>
                         </div>
                         <div class="challenge-item" id="challenge3">
-                            <div class="challenge-icon">🎯</div>
-                            <div class="challenge-text">5 точных тапов</div>
+                            <div class="challenge-icon">🤍</div>
+                            <div class="challenge-text">5 точных кликов</div>
                             <div class="checkmark">✓</div>
                         </div>
                         <div class="challenge-item" id="challenge4">
-                            <div class="challenge-icon">💫</div>
+                            <div class="challenge-icon">🤍</div>
                             <div class="challenge-text">Собери 50 очков</div>
                             <div class="checkmark">✓</div>
                         </div>
@@ -770,7 +764,7 @@ html, body {
                 
                 <div class="victory-message" id="victoryMessage">
                     <h3 class="victory-title">Поздравляю! 🎉</h3>
-                    <p class="victory-text">Ты собрала все сердечки! Спасибо, что прошла эту игру до конца! <p>Ты — самая милая 💖</p> </p>
+                    <p class="victory-text">Все задания выполнены! Ты прошла эту игру до конца! <p>Ты — самая милая 💖</p> </p>
                 </div>
             </div>
             
@@ -788,12 +782,6 @@ html, body {
     </div>
 </div> 
 
-
-
-
-
-
-    
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         if(!localStorage.getItem('valentine_authorized') || localStorage.getItem('valentine_authorized') === 'false') {
@@ -1116,10 +1104,10 @@ html, body {
                 createHeartBurst();
                 
                 const messages = {
-                    1: "Первое испытание пройдено! Ты молодец! 💪",
-                    2: "Удержала! Значит, ты умеешь быть терпеливой 😉",
-                    3: "Идеальные попадания! Ты точно в цель 🎯",
-                    4: "🎉 50 очков собрано!"
+                    1: "Первое испытание пройдено. Молодец!",
+                    2: "Удержала!",
+                    3: "Идеальные попадания!",
+                    4: "50 очков собрано!"
                 };
                 
                 showBeautifulToast(messages[challengeId], challengeId === 4 ? 'success' : 'love');
@@ -1159,107 +1147,15 @@ html, body {
                 continueBtn.className = 'action-btn magic';
                 continueBtn.innerHTML = '<i class="fas fa-star"></i> Что дальше?';
                 continueBtn.style.marginTop = '20px';
+                
                 continueBtn.onclick = function() {
-                    logEvent('Нажала кнопку "Что дальше?"');
-                    showFinalSurprise();
+                    logEvent('Нажала кнопку "Что дальше?" (декоративная)');
+                    showBeautifulToast('а дальше тут должно было быть логическое завершение в виде крутого сообщения + приглашения погулять', 'love');
                 };
                 
                 elements.victoryMessage.appendChild(continueBtn);
                 
             }, 1000);
-        }
-        
-        function showFinalSurprise() {
-            logEvent('Показано признание в любви');
-            
-            const finalMessage = `
-                <div style="text-align: center; padding: 30px;">
-                    <h3 style="color: #ff2a78; font-size: 32px; margin-bottom: 20px;">А дальше самое важное ✨</h3>
-                    <p style="font-size: 18px; line-height: 1.6; color: #555; margin-bottom: 20px;">
-                        Мы росли напротив, через дорогу.<br>
-                        Детство прошло вместе.<br>
-                        Не виделись несколько лет.
-                    </p>
-                    <p style="font-size: 18px; line-height: 1.6; color: #555; margin-bottom: 25px;">
-                        В январе мы встретились снова. И знаешь, за это время я многое понял.<br>
-                        Мне с тобой до сих пор по-настоящему хорошо.
-                    </p>
-                    <div style="background: rgba(255, 42, 120, 0.1); padding: 20px; border-radius: 20px; margin: 25px 0;">
-                        <p style="font-size: 22px; color: #ff2a78; font-weight: bold; margin-bottom: 15px;">
-                            Я хочу, чтобы ты стала моей девушкой.
-                        </p>
-                        <p style="font-size: 20px; color: #ff2a78; font-weight: bold;">
-                            Ты согласна?
-                        </p>
-                    </div>
-                    
-                    <div style="margin-top: 30px;">
-                        <textarea 
-                            id="responseText" 
-                            placeholder="Напиши свой ответ здесь..." 
-                            style="width: 100%; padding: 15px; border-radius: 15px; border: 2px solid #ff6fa5; font-family: 'Inter', sans-serif; font-size: 16px; resize: vertical; min-height: 100px; margin-bottom: 20px;"
-                        ></textarea>
-                        <button class="action-btn primary" id="sendBtn" style="padding: 15px 40px; font-size: 17px; width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Отправить ответ
-                        </button>
-                        <p style="font-size: 14px; color: #888; margin-top: 15px;">
-                            Я увижу твой ответ сразу, как только ты нажмёшь "Отправить" ✨
-                        </p>
-                    </div>
-                    
-                    <div id="thankYouMessage" style="display: none; margin-top: 30px; padding: 20px; background: rgba(255, 42, 120, 0.1); border-radius: 20px;">
-                        <p style="font-size: 20px; color: #ff2a78; font-weight: bold; margin-bottom: 10px;">
-                            <i class="fas fa-check-circle"></i> Уже увидел твой ответ :)
-                        </p>
-                    </div>
-                </div>
-            `;
-            
-            elements.victoryMessage.innerHTML = finalMessage;
-            
-            setTimeout(() => {
-                // Логируем ввод текста в поле ответа
-                document.getElementById('responseText').addEventListener('input', function() {
-                    const text = this.value;
-                    const charCount = text.length;
-                    logEvent('Вводит ответ на признание', {
-                        текущийТекст: text,
-                        длинаТекста: charCount,
-                        последнийСимвол: charCount > 0 ? text[charCount - 1] : ''
-                    });
-                });
-                
-                document.getElementById('sendBtn').addEventListener('click', function() {
-                    const responseText = document.getElementById('responseText').value.trim();
-                    if (responseText) {
-                        logEvent('Отправила ответ на признание', { 
-                            ответ: responseText,
-                            длинаОтвета: responseText.length
-                        });
-                        
-                        showBeautifulToast("Твой ответ сохранен! Спасибо 💝", 'love');
-                        document.getElementById('thankYouMessage').style.display = 'block';
-                        document.querySelector('textarea').style.display = 'none';
-                        document.querySelector('#sendBtn').style.display = 'none';
-                        document.querySelector('p[style*="font-size: 14px"]').style.display = 'none';
-                        
-                        createConfetti();
-                        setTimeout(() => createConfetti(), 300);
-                        setTimeout(() => createConfetti(), 600);
-                    } else {
-                        logEvent('Попытка отправить пустой ответ');
-                        showBeautifulToast("Напиши что-нибудь...", 'hint');
-                    }
-                });
-            }, 100);
-            
-            createConfetti();
-            setTimeout(createConfetti, 500);
-            setTimeout(createConfetti, 1000);
-        }
-        
-        function showTemporaryMessage(text) {
-            showBeautifulToast(text, 'love');
         }
         
         function createFloatingHeart() {
@@ -1362,9 +1258,8 @@ html, body {
         
         function showHint() {
             const hints = [
-                "Выполни все 4 задания (жми на ❤️)",
-                "Выполненные задания обведены зеленым"
-            ];
+            "жми на 🩷"
+        ];
             
             const hint = hints[Math.floor(Math.random() * hints.length)];
             logEvent('Показана подсказка', { текстПодсказки: hint });
